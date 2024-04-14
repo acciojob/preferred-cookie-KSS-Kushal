@@ -7,21 +7,24 @@ const save = (e) => {
 	e.preventDefault();
 	bodyHTML.style.color = colorHTML.value;
 	bodyHTML.style.fontSize = `${sizeHTML.value}px`;
-	document.cookie = `fontSize=${sizeHTML.value};`;
-	document.cookie = `fontColor=${colorHTML.value};`
+	const d = new Date();
+	d.setTime(d.getTime() + (exdays*24*60*60*1000));
+	let expires = "expires="+ d.toUTCString();
+	document.cookie = `fontSize=${sizeHTML.value};${expires};`;
+	document.cookie = `fontColor=${colorHTML.value};${expires};`
 }
 
 const cookie = document.cookie;
 const myObj = {};
 const data = cookie.split("; ");
 data.forEach((v)=>{
-	console.log(v.split("=")[0])
 	if(v.split("=")[0]=="fontColor"){
 		myObj.color = v.split("=")[1];
 	}else if(v.split("=")[0]=="fontSize"){
 		myObj.size = v.split("=")[1];
 	}
 })
+
 if(myObj.color){
 	bodyHTML.style.color = myObj.color;
 }
