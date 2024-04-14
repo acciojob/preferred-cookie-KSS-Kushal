@@ -10,17 +10,17 @@ const save = (e) => {
 	const d = new Date();
 	d.setTime(d.getTime() + (2*24*60*60*1000));
 	let expires = "expires="+ d.toUTCString();
-	document.cookie = `fontSize=${sizeHTML.value};${expires};`;
-	document.cookie = `fontColor=${colorHTML.value};${expires};`
+	document.cookie = `fontsize=${sizeHTML.value};${expires};`;
+	document.cookie = `fontcolor=${colorHTML.value};${expires};`
 }
 
 const cookie = document.cookie;
 const myObj = {};
 const data = cookie.split("; ");
 data.forEach((v)=>{
-	if(v.split("=")[0]=="fontColor"){
+	if(v.split("=")[0]=="fontcolor"){
 		myObj.color = v.split("=")[1];
-	}else if(v.split("=")[0]=="fontSize"){
+	}else if(v.split("=")[0]=="fontsize"){
 		myObj.size = v.split("=")[1];
 	}
 })
