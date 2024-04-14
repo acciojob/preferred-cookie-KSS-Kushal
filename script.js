@@ -8,7 +8,7 @@ const save = (e) => {
 	bodyHTML.style.color = colorHTML.value;
 	bodyHTML.style.fontSize = `${sizeHTML.value}px`;
 	const d = new Date();
-	d.setTime(d.getTime() + (exdays*24*60*60*1000));
+	d.setTime(d.getTime() + (2*24*60*60*1000));
 	let expires = "expires="+ d.toUTCString();
 	document.cookie = `fontSize=${sizeHTML.value};${expires};`;
 	document.cookie = `fontColor=${colorHTML.value};${expires};`
