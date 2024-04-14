@@ -7,23 +7,24 @@ const save = (e) => {
 	e.preventDefault();
 	bodyHTML.style.color = colorHTML.value;
 	bodyHTML.style.fontSize = `${sizeHTML.value}px`;
-	document.cookie = `size=${sizeHTML.value}; color=${colorHTML.value}`;
+	document.cookie = `fontSize=${sizeHTML.value};`;
+	document.cookie = `fontColor=${colorHTML.value};`
 }
 
 const cookie = document.cookie;
 const myObj = {};
 const data = cookie.split("; ");
 data.forEach((v)=>{
-	if(v.split("=")[0]=="color"){
+	console.log(v.split("=")[0])
+	if(v.split("=")[0]=="fontColor"){
 		myObj.color = v.split("=")[1];
-	}else if(v.split("=")[0]=="size"){
+	}else if(v.split("=")[0]=="fontSize"){
 		myObj.size = v.split("=")[1];
 	}
 })
-
 if(myObj.color){
-	bodyHTML.style.color = colorHTML.value;
+	bodyHTML.style.color = myObj.color;
 }
 if(myObj.size){
-	bodyHTML.style.fontSize = `${sizeHTML.value}px`;
+	bodyHTML.style.fontSize = `${myObj.size}px`;
 }
